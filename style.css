@@ -1,0 +1,209 @@
+/* Base layout */
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  font-family: 'Share Tech Mono', monospace;
+  color: white;
+  overflow: hidden;
+}
+
+/* Glitching title */
+.title {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 20vh;
+  position: relative;
+  z-index: 2;
+}
+.glitch {
+  position: relative;
+  color: white;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #f0f;
+  z-index: -1;
+}
+.glitch::before {
+  animation: glitchTop 2s infinite;
+}
+.glitch::after {
+  animation: glitchBottom 2s infinite;
+  color: #0ff;
+}
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 90% 0); }
+  50% { clip-path: inset(20% 0 60% 0); }
+  100% { clip-path: inset(40% 0 30% 0); }
+}
+@keyframes glitchBottom {
+  0% { clip-path: inset(80% 0 0 0); }
+  50% { clip-path: inset(30% 0 50% 0); }
+  100% { clip-path: inset(60% 0 20% 0); }
+}
+
+/* PFP */
+.pfp {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.pfp img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid white;
+  filter: grayscale(100%) contrast(110%);
+}
+
+/* Social links */
+.socials {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+.socials a {
+  text-decoration: none;
+  color: #ccc;
+  position: relative;
+}
+.socials a:hover {
+  color: white;
+}
+.socials a::after {
+  content: "_";
+  margin-left: 2px;
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Music toggle */
+.music-player {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+.music-player button {
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Terminal shell */
+.terminal {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  height: 300px;
+  overflow-y: auto;
+}
+.terminal input {
+  background: black;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+  font-family: inherit;
+  font-size: 1em;
+  width: 80%;
+  outline: none;
+}
+
+/* Red alert */
+.red-alert {
+  background: #1e0000 !important;
+  color: red !important;
+}
+
+/* Stars background */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.stars { background-image: url("https://www.transparenttextures.com/patterns/stardust.png"); animation: starAnim 200s linear infinite; }
+.stars2 { background-image: url("https://www.transparenttextures.com/patterns/stardust.png"); animation: starAnim 300s linear infinite; opacity: 0.5; }
+.stars3 { background-image: url("https://www.transparenttextures.com/patterns/stardust.png"); animation: starAnim 400s linear infinite; opacity: 0.3; }
+@keyframes starAnim {
+  0% { background-position: 0 0; }
+  100% { background-position: 10000px 5000px; }
+}
+
+/* Centered overlays */
+.centered {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  z-index: 1000;
+  flex-direction: column;
+}
+.centered input, .centered label {
+  font-family: 'Share Tech Mono', monospace;
+  margin: 5px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+}
+.centered button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
+
+/* Blinking cursor for boot */
+@keyframes blinkCursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.archive-link {
+  color: red;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-shadow: 0 0 5px red;
+}
+
+.archive-link:hover {
+  color: white;
+  text-shadow: 0 0 3px red, 0 0 6px red;
+  animation: glitch-flicker 0.3s infinite;
+}
+@keyframes glitch-flicker {
+  0% { text-shadow: 0 0 3px red; }
+  50% { text-shadow: 0 0 6px red, 2px 0 red; }
+  100% { text-shadow: 0 0 3px red; }
+}
+
