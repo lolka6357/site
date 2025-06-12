@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>@kuniuser - gang</title>
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-<audio id="bg-music" src="music/ty-i-ia.mp3" loop></audio>
-<button onclick="document.getElementById('bg-music').play()">🎵 Включить музыку</button>
 
   <style>
     body {
@@ -110,9 +108,12 @@
 </head>
 <body>
 
-  <!-- Archives Link via Skull -->
-    <img src="https://i.pinimg.com/736x/45/74/22/4574220bdb8ec123f1443478b98b733c.jpg" width="100" alt="skull">
-  </div>
+  <!-- Музыка -->
+  <audio id="bg-music" src="music/ty-i-ia.mp3" loop></audio>
+  <button onclick="document.getElementById('bg-music').play()">🎵 Включить музыку</button>
+
+  <!-- Skull image -->
+  <img src="https://i.pinimg.com/736x/45/74/22/4574220bdb8ec123f1443478b98b733c.jpg" width="100" alt="skull">
 
   <div class="arc-title">@kuniuser - gang</div>
 
@@ -128,7 +129,7 @@
   </div>
 
   <div id="desultory" class="profile">
-    <img src="<https://i.ibb.co/XkWk4GFr/ig-sqwrtick3000.jpg" alt="Desultory">
+    <img src="https://i.ibb.co/XkWk4GF/ig-sqwrtick3000.jpg" alt="Desultory">
     <h2>Desultory</h2>
     <p>you notice he's already watching.</p>
   </div>
@@ -179,19 +180,16 @@
     }
   </script>
 
-  <!-- Security: Disable DevTools, Inspect, Selection -->
+  <!-- Security: Disable DevTools, Selection, etc -->
   <script>
-    // Force HTTPS
     if (location.protocol !== 'https:') {
       location.replace(`https:${location.href.substring(location.protocol.length)}`);
     }
 
-    // Disable right-click and selection/drag
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('dragstart', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
 
-    // Disable key combos
     document.addEventListener('keydown', function(e) {
       if (
         e.key === "F12" ||
@@ -202,7 +200,6 @@
       }
     });
 
-    // DevTools detection
     let devtoolsOpened = false;
     const detect = () => {
       devtoolsOpened = false;
@@ -222,7 +219,7 @@
     setInterval(detect, 1000);
   </script>
 
-  <!-- Hidden Music Autoplay -->
+  <!-- SoundCloud -->
   <iframe 
     style="display: none"
     allow="autoplay"
