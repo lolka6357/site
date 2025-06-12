@@ -18,6 +18,37 @@
       user-select: none;
     }
 
+    /* Оверлей full-screen */
+    #overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      flex-direction: column;
+      color: red;
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 24px;
+      text-shadow: 0 0 10px red;
+    }
+    #overlay button {
+      margin-top: 20px;
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid red;
+      color: red;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+    #overlay button:hover {
+      background: red;
+      color: black;
+    }
+
     .arc-title {
       font-size: 30px;
       animation: pulseRed 2s infinite;
@@ -108,8 +139,13 @@
 </head>
 <body>
 
-  <!-- Кнопка и аудио -->
-  <button id="play-music">🎵 Включить музыку</button>
+  <!-- Оверлей -->
+  <div id="overlay">
+    <div>Click to continue</div>
+    <button id="continueBtn">▶️ Продолжить</button>
+  </div>
+
+  <!-- Аудио, скрыто -->
   <audio id="bg-music" src="music/natura.mp3" loop></audio>
 
   <!-- Skull image -->
@@ -224,21 +260,19 @@
     setInterval(detect, 1000);
   </script>
 
-  <!-- Music play button logic -->
+  <!-- Автозапуск музыки после клика -->
   <script>
-    const btn = document.getElementById('play-music');
+    const btn = document.getElementById('continueBtn');
+    const overlay = document.getElementById('overlay');
     const audio = document.getElementById('bg-music');
 
     btn.addEventListener('click', () => {
       audio.play().catch(e => {
         alert('Ошибка воспроизведения музыки: ' + e.message);
       });
+      overlay.style.display = 'none';
     });
   </script>
 
-  <!-- SoundCloud hidden iframe -->
-  <iframe 
-    style="display: none"
-    allow="autoplay"
-    src="
-
+</body>
+</html>
